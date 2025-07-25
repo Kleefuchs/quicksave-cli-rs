@@ -11,13 +11,9 @@ cd $(qcr get path1)
 <br />
 <h2>How to install</h2>
 On Linux: 
-```
-sudo cargo install --path . --root /usr
-```
 
 ```
-git clone https://github.com/Kleefuchs/.config.git config
-cd config
+sudo cargo install --path . --root /usr
 ```
 
 
