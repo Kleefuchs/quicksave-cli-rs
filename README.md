@@ -6,4 +6,4 @@ Just run `qcr help`
 `cd $(qcr get path1)`
 <br><br>
 <h2>How to install</h2>
-On Linux: `sudo cargo install --path . --root /usr`
+On Linux: ´sudo cargo install --path . --root /usr´
