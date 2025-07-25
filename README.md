@@ -4,11 +4,13 @@ Just run
 ```
 qcr help
 ```
+
 <br />
 <h2>Examples:</h2>
 ```
 cd $(qcr get path1)
 ```
+
 <br />
 <h2>How to install</h2>
 On Linux: 
