@@ -1,7 +1,8 @@
 <h1>This is a programm for quickly saving values and loading them again</h1>
 <br />
+Just run
 ```
-Just runqcr help
+qcr help
 ```
 <br />
 <h2>Examples:</h2>
