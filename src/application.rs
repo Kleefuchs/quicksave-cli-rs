@@ -1,7 +1,4 @@
 
-use crate::application::json_file_io::JSONFileIO;
-
-mod json_file_io;
 mod value_manager;
 
 pub struct Application<'a> {
@@ -12,9 +9,18 @@ pub struct Application<'a> {
 
 impl Application<'_> {
     pub fn new(args: Vec<String>, paths_file_path: &std::path::Path) -> Application {
+        let mut strbuf = String::new();
         Application {
             args,
-            value_manager: value_manager::ValueManager::read_from_file(paths_file_path),
+            value_manager: match serde_json_file_io::read_from_file::<value_manager::ValueManager>(paths_file_path, &mut strbuf) {
+                Ok(vm) => {
+                    vm
+                },
+                Err(e) => {
+                    println!("{}", e);
+                    value_manager::ValueManager::new()
+                },
+            },
             paths_file_path,
         }
     }
@@ -97,7 +103,7 @@ impl Application<'_> {
     }
 
     pub fn save_paths(&self) -> Result<String, String> {
-        match self.value_manager.write_to_file(self.paths_file_path) {
+        match serde_json_file_io::write_to_file(&self.value_manager, self.paths_file_path) {
             Ok(_) => {
                 Ok("".to_owned())
             },
