@@ -14,3 +14,11 @@ On Linux:
 ```
 sudo cargo install --path . --root /usr
 ```
+
+```
+git clone https://github.com/Kleefuchs/.config.git config
+cd config
+```
+
+
+
