@@ -61,6 +61,13 @@ impl Application<'_> {
         }
     }
 
+    fn help(&self) -> String {
+        println!("add: Used to add values to the file.                                          add <name> <value>");
+        println!("rm: Used to remove values from the file.                                      rm <name>");
+        println!("list: Used to list values in the file.                                        list");
+        "help: Shows this message.                                                     help".to_owned()
+    }
+
     pub fn run(&mut self) -> Result<String, String> {
         if self.args.len() < 2 {
             return Err("A minimum of 1 extra argument is required. Try help subcommand".to_owned());
@@ -76,7 +83,7 @@ impl Application<'_> {
                 let name_argument: String = self.args[2].clone();
                 let path_argument: String = self.args[3].clone();
                 self.add(name_argument, std::path::Path::new(&path_argument))
-            }
+            },
             "rm" => {
                 if self.args.len() < 3 {
                     return Err("Subcommand \"rm\" requires 1 extra argument".to_owned());
@@ -86,7 +93,7 @@ impl Application<'_> {
                     Ok(sstring) => Ok(sstring),
                     Err(estring) => Err(estring),
                 }
-            }
+            },
             "get" => {
                 if self.args.len() < 3 {
                     return Err("Subcommand \"add\" requires 1 extra argument".to_owned());
@@ -97,6 +104,9 @@ impl Application<'_> {
                     Ok(_) => Ok("".to_owned()),
                     Err(e) => Err(e),
                 }
+            },
+            "help" => {
+                Ok(self.help())
             }
             _ => Err("Unknown subcommand".to_owned()),
         }
