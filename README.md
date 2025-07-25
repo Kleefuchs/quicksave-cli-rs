@@ -6,6 +6,7 @@ Just run `qcr help`
 <br />
 <h2>Examples:</h2>
 Getting the path1 value to cd into the path
+
 ```
 cd $(qcr get path1)
 ```
