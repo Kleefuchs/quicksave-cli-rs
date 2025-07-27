@@ -16,6 +16,7 @@ cd $(qcr get path1)
 On Linux: 
 
 ```
+sudo default stable
 sudo cargo install --path . --root /usr
 ```
 
